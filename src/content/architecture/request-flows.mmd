@@ -1,0 +1,71 @@
+%% CuePoint — Key runtime flows (sequence diagrams)
+%% Flow 1: LTI 1.3 launch  |  Flow 2: Student submission + auto-grade + Canvas passback
+%% Flow 3: AI question generation  |  Flow 4: AI grading for open-ended answers
+
+sequenceDiagram
+    autonumber
+    participant U as User (Canvas iframe)
+    participant C as Canvas LMS
+    participant MW as Next.js middleware
+    participant LTI as /api/lti/*
+    participant Lib as lib/lti.ts + lti-keys.ts
+    participant DB as PostgreSQL
+
+    rect rgb(240,245,255)
+    note over U,DB: Flow 1 — LTI 1.3 launch & provisioning
+    C->>LTI: POST /api/lti/login (OIDC login_hint)
+    LTI->>DB: lookup lti_platforms, store lti_oidc_states
+    LTI-->>C: 302 auth redirect (state, nonce)
+    C->>LTI: POST /api/lti/launch (id_token)
+    LTI->>Lib: verify JWT via Canvas JWKS (jose)
+    Lib->>DB: upsert users, courses, enrollments<br/>insert lti_launch_contexts<br/>mark lti_nonces consumed
+    LTI->>MW: set iat_user_id / iat_user_role cookies
+    LTI-->>U: 302 /dashboard or /assess (embedded)
+    end
+
+    participant S as Student UI (/assess)
+    participant SUB as /api/submissions
+    participant GR as lib/grading.ts
+    participant GAPI as /api/grades
+    participant AGS as Canvas AGS
+
+    rect rgb(240,255,245)
+    note over S,AGS: Flow 2 — Submit assessment & grade passback
+    S->>MW: POST /api/submissions (answers)
+    MW->>SUB: rate-limit ok, session ok
+    SUB->>GR: auto-grade each question<br/>(MC, numeric, matching, FIB…)
+    GR->>DB: write submissions, question_responses,<br/>response_events
+    SUB-->>S: score + feedback
+    SUB->>GAPI: enqueue passback
+    GAPI->>Lib: AGS client (signed JWT)
+    Lib->>AGS: POST line-item score
+    AGS-->>Lib: 200 OK
+    end
+
+    participant I as Instructor UI
+    participant AI as /api/ai/*
+    participant AILib as lib/ai.ts
+    participant CL as Anthropic Claude API
+
+    rect rgb(255,248,235)
+    note over I,CL: Flow 3 — AI question generation
+    I->>MW: POST /api/ai/generate (topic, types, count)
+    MW->>AI: AI-tier rate-limit ok
+    AI->>AILib: generateQuestions()
+    AILib->>CL: messages.create(prompt)
+    CL-->>AILib: JSON question objects
+    AILib-->>AI: parsed + Zod-validated
+    AI->>DB: persist into questions (draft)
+    AI-->>I: question list for review
+    end
+
+    rect rgb(255,235,240)
+    note over S,CL: Flow 4 — AI grading for open-ended responses
+    S->>SUB: submit open-ended / essay / file upload
+    SUB->>GR: mark as needs-AI-review
+    GR->>AILib: gradeOpenEnded(answer, rubric)
+    AILib->>CL: messages.create(grading prompt)
+    CL-->>AILib: score + rationale
+    AILib->>DB: update question_responses.ai_score,<br/>ai_feedback
+    SUB-->>S: pending or released score
+    end

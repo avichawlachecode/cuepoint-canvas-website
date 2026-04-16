@@ -7,12 +7,12 @@ const COLUMNS = [
       { label: "Features", href: "/features" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Security", href: "/security" },
     ],
   },
   {
     title: "Resources",
     links: [
+      { label: "Security", href: "/security" },
       { label: "Documentation", href: "#" },
       { label: "Case Studies", href: "#" },
       { label: "Blog", href: "#" },

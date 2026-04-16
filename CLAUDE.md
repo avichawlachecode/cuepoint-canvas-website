@@ -90,3 +90,6 @@ Sections alternate between white, `surface-alt`, and `surface-dark` (for dark se
 - Push to this branch to trigger Vercel deploy via deploy hook
 - Do NOT merge to `main` — the product and website are separate Vercel projects
 - Commit messages should be descriptive, focused on website changes
+
+## README policy
+Whenever you make a change that affects the site (nav, pages, structure, tech stack, deployment, theme tokens, scripts), update `README.md` in the same commit. The README is the source of truth for contributors and must stay in sync.

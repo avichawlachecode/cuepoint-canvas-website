@@ -1,6 +1,10 @@
 import Link from "next/link";
-import Section, { SectionLabel, SectionTitle, SectionDescription } from "@/components/section";
-import { ArrowRight, CheckCircle2, HelpCircle } from "lucide-react";
+import Section, {
+  SectionLabel,
+  SectionTitle,
+} from "@/components/section";
+import { PrimaryButton, Chip } from "@/components/ui";
+import { CheckCircle2, HelpCircle, Sparkles } from "lucide-react";
 
 const TIERS = [
   {
@@ -24,7 +28,8 @@ const TIERS = [
     name: "Institution",
     price: "Custom",
     period: "per year",
-    description: "Flat annual pricing for your entire institution. No per-student or per-attempt fees.",
+    description:
+      "Flat annual pricing for your entire institution. No per-student or per-attempt fees.",
     highlight: true,
     features: [
       "Unlimited instructors",
@@ -35,8 +40,8 @@ const TIERS = [
       "Mastery learning & Bloom's tracking",
       "Assessment groups (composite scoring)",
       "Question bank with CSV/Excel/QTI import",
-      "Priority support + dedicated success manager",
-      "Custom DPA (Data Processing Agreement)",
+      "Priority support + dedicated CSM",
+      "Custom DPA",
       "Security review support for your CISO",
     ],
     cta: "Request a Quote",
@@ -45,7 +50,8 @@ const TIERS = [
     name: "Multi-year",
     price: "Custom",
     period: "2-3 year contract",
-    description: "Lock in the best rate and secure roadmap input as a design partner.",
+    description:
+      "Lock in the best rate and secure roadmap input as a design partner.",
     highlight: false,
     features: [
       "Everything in Institution",
@@ -65,12 +71,12 @@ const FAQ = [
     a: "No. CuePoint uses flat annual pricing. Your cost doesn't go up when your faculty use it more — we reward adoption, not penalize it.",
   },
   {
-    q: "Are AI features (question generation, grading) included or extra?",
-    a: "Included. AI costs are built into the subscription. We rate-limit at the infrastructure level so usage stays predictable and you get a flat bill.",
+    q: "Are AI features included or extra?",
+    a: "Included. AI costs are built into the subscription. We rate-limit at the infrastructure level so usage stays predictable.",
   },
   {
     q: "What happens after the pilot?",
-    a: "At the end of the pilot, we present a readout with usage data, faculty feedback, and time-savings metrics. If the results are strong, we propose an institution or multi-year plan. If not, no hard feelings — your data is exportable in CSV and QTI 2.1.",
+    a: "At the end of the pilot, we present a readout with usage data, faculty feedback, and time-savings metrics. If results are strong, we propose an institution or multi-year plan. If not, your data is exportable in CSV and QTI 2.1.",
   },
   {
     q: "Can we start with one department and expand later?",
@@ -78,11 +84,11 @@ const FAQ = [
   },
   {
     q: "How does your pricing compare to Atomic Assessments / Learnosity?",
-    a: "Atomic Assessments often meters by item, attempt, or student via the underlying Learnosity engine. CuePoint is flat. For large-enrollment institutions, the difference is significant — your bill doesn't grow with success.",
+    a: "Atomic Assessments often meters by item, attempt, or student via the underlying Learnosity engine. CuePoint is flat. For large-enrollment institutions, the difference is significant.",
   },
   {
     q: "Do you offer a DPA (Data Processing Agreement)?",
-    a: "Yes. We have a standard DPA template ready to go. We can also accommodate institution-specific amendments. Just ask during the sales process.",
+    a: "Yes. We have a standard DPA template ready and can accommodate institution-specific amendments.",
   },
 ];
 
@@ -90,103 +96,156 @@ export default function PricingPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-brand-50 to-surface px-6 pb-16 pt-20 text-center md:pt-28">
-        <div className="mx-auto max-w-3xl">
-          <SectionLabel>Pricing</SectionLabel>
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
+      <section className="relative overflow-hidden bg-surface-dark px-6 pb-24 pt-32 text-center text-white md:pt-40">
+        <div className="aurora" />
+        <div className="dot-grid absolute inset-0 opacity-40" />
+        <div className="relative mx-auto max-w-3xl">
+          <div className="mb-6 flex justify-center">
+            <Chip icon={Sparkles} variant="dark">
+              Pricing
+            </Chip>
+          </div>
+          <h1 className="font-display text-5xl font-semibold leading-[1] tracking-tight md:text-7xl">
             Flat pricing.{" "}
-            <span className="text-brand-600">No per-student fees.</span>
+            <span className="text-gradient">No per-student fees.</span>
           </h1>
-          <p className="mt-6 text-lg text-text-muted">
-            Start with a free pilot. Expand to a flat annual site license.
-            AI included. No usage metering. Your bill doesn&apos;t grow when
-            your faculty use it more.
+          <p className="mx-auto mt-8 max-w-2xl text-lg text-white/70">
+            Start with a free pilot. Expand to a flat annual site license. AI
+            included. Your bill doesn&apos;t grow when your faculty use it more.
           </p>
         </div>
       </section>
 
       {/* Tiers */}
       <Section>
-        <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3">
           {TIERS.map((tier) => (
             <div
               key={tier.name}
-              className={`flex flex-col rounded-2xl border p-8 shadow-sm ${
+              className={`relative flex flex-col rounded-3xl p-8 transition-all ${
                 tier.highlight
-                  ? "border-brand-500 bg-white ring-2 ring-brand-500/20"
-                  : "border-border bg-white"
+                  ? "bg-gradient-to-br from-brand-600 via-brand-700 to-accent-600 p-[1px] shadow-soft-lg"
+                  : "border border-border bg-white shadow-soft hover:-translate-y-1 hover:shadow-soft-lg"
               }`}
             >
-              {tier.highlight && (
-                <span className="mb-4 inline-block self-start rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">
-                  Most popular
-                </span>
-              )}
-              <h3 className="text-xl font-bold">{tier.name}</h3>
-              <div className="mt-3">
-                <span className="text-4xl font-extrabold">{tier.price}</span>
-                <span className="ml-2 text-sm text-text-muted">/ {tier.period}</span>
-              </div>
-              <p className="mt-3 text-sm text-text-muted">{tier.description}</p>
-
-              <ul className="mt-8 flex-1 space-y-3">
-                {tier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href="/contact"
-                className={`mt-8 block rounded-lg px-6 py-3 text-center text-sm font-semibold transition-all ${
+              <div
+                className={`flex h-full flex-col ${
                   tier.highlight
-                    ? "bg-brand-600 text-white shadow-lg hover:bg-brand-700"
-                    : "border border-border bg-surface-alt text-text hover:border-brand-300 hover:bg-brand-50"
+                    ? "rounded-[calc(1.5rem-1px)] bg-surface-dark p-8 text-white"
+                    : ""
                 }`}
               >
-                {tier.cta}
-              </Link>
+                {tier.highlight && (
+                  <div className="mb-6 flex justify-between">
+                    <Chip icon={Sparkles} variant="dark">
+                      Most popular
+                    </Chip>
+                  </div>
+                )}
+                <h3 className="font-display text-2xl font-semibold">
+                  {tier.name}
+                </h3>
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className="font-display text-5xl font-semibold">
+                    {tier.price}
+                  </span>
+                  <span
+                    className={
+                      tier.highlight ? "text-sm text-white/60" : "text-sm text-text-muted"
+                    }
+                  >
+                    / {tier.period}
+                  </span>
+                </div>
+                <p
+                  className={`mt-3 text-sm ${
+                    tier.highlight ? "text-white/70" : "text-text-muted"
+                  }`}
+                >
+                  {tier.description}
+                </p>
+
+                <ul className="mt-8 flex-1 space-y-3">
+                  {tier.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-sm">
+                      <span
+                        className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${
+                          tier.highlight
+                            ? "bg-gradient-to-br from-brand-400 to-accent-400 text-white"
+                            : "bg-gradient-to-br from-brand-500 to-accent-500 text-white"
+                        }`}
+                      >
+                        <CheckCircle2 className="h-3 w-3" />
+                      </span>
+                      <span
+                        className={
+                          tier.highlight ? "text-white/85" : "text-text"
+                        }
+                      >
+                        {f}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/contact"
+                  className={`mt-8 block rounded-full px-6 py-3.5 text-center text-sm font-semibold transition-all ${
+                    tier.highlight
+                      ? "btn-shine bg-gradient-to-r from-brand-500 to-accent-500 text-white shadow-soft-lg hover:-translate-y-0.5"
+                      : "border border-border bg-surface-alt text-text hover:border-brand-300 hover:bg-brand-50"
+                  }`}
+                >
+                  {tier.cta}
+                </Link>
+              </div>
             </div>
           ))}
         </div>
       </Section>
 
       {/* FAQ */}
-      <Section className="bg-surface-alt">
+      <Section alt>
         <div className="mx-auto max-w-3xl text-center">
           <SectionLabel>FAQ</SectionLabel>
-          <SectionTitle>Common pricing questions</SectionTitle>
+          <SectionTitle>Common pricing questions.</SectionTitle>
         </div>
 
-        <div className="mx-auto mt-12 max-w-3xl space-y-6">
+        <div className="mx-auto mt-14 max-w-3xl space-y-4">
           {FAQ.map((item) => (
-            <div key={item.q} className="rounded-xl border border-border bg-white p-6 shadow-sm">
-              <h3 className="flex items-start gap-3 font-semibold">
-                <HelpCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-500" />
-                {item.q}
-              </h3>
-              <p className="mt-3 pl-8 text-sm leading-relaxed text-text-muted">{item.a}</p>
-            </div>
+            <details
+              key={item.q}
+              className="group rounded-2xl border border-border bg-white p-6 shadow-soft transition-all open:shadow-soft-lg"
+            >
+              <summary className="flex cursor-pointer items-start justify-between gap-4 font-display text-base font-semibold">
+                <span className="flex items-start gap-3">
+                  <HelpCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-500" />
+                  {item.q}
+                </span>
+                <span className="mt-1 text-text-muted transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 pl-8 text-sm leading-relaxed text-text-muted">
+                {item.a}
+              </p>
+            </details>
           ))}
         </div>
       </Section>
 
       {/* CTA */}
       <Section dark>
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionTitle>Ready to start?</SectionTitle>
-          <p className="mt-4 text-lg text-slate-400">
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
+        <div className="relative mx-auto max-w-3xl text-center">
+          <SectionTitle className="text-white">Ready to start?</SectionTitle>
+          <p className="mt-6 text-lg text-white/70">
             The pilot is free, setup takes an afternoon, and you&apos;ll have
             data within weeks. No risk, no commitment.
           </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg transition-all hover:bg-brand-400"
-          >
-            Request a Demo <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="mt-10 flex justify-center">
+            <PrimaryButton href="/contact">Request a Demo</PrimaryButton>
+          </div>
         </div>
       </Section>
     </>

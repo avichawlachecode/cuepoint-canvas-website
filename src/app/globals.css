@@ -1,27 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
+  /* Brand: indigo → electric blue */
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
 
+  /* Accent: violet */
+  --color-accent-300: #c4b5fd;
   --color-accent-400: #a78bfa;
   --color-accent-500: #8b5cf6;
   --color-accent-600: #7c3aed;
 
-  --color-surface: #ffffff;
-  --color-surface-alt: #f8fafc;
-  --color-surface-dark: #0f172a;
+  /* Electric blue for gradient pairing */
+  --color-electric-400: #60a5fa;
+  --color-electric-500: #3b82f6;
+  --color-electric-600: #2563eb;
+
+  /* Highlight (AI) */
+  --color-lime-400: #a3e635;
+
+  /* Surfaces */
+  --color-surface: #fafaf9;
+  --color-surface-white: #ffffff;
+  --color-surface-alt: #f4f4f2;
+  --color-surface-dark: #0a0a0f;
+  --color-surface-dark-alt: #12131a;
+
+  /* Text */
   --color-text: #0f172a;
   --color-text-muted: #64748b;
-  --color-border: #e2e8f0;
+  --color-text-subtle: #94a3b8;
+
+  /* Border */
+  --color-border: #e4e4e7;
+  --color-border-dark: #1f2030;
+
+  /* Fonts */
+  --font-display: var(--font-inter-tight), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 html {
@@ -31,4 +56,204 @@ html {
 body {
   color: var(--color-text);
   background: var(--color-surface);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ───── Utility classes ───── */
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Aurora gradient blob behind hero sections */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.55;
+  animation: aurora-drift 22s ease-in-out infinite alternate;
+}
+
+.aurora::before {
+  background: radial-gradient(circle at center, #4f46e5 0%, transparent 70%);
+  top: -120px;
+  left: -60px;
+}
+
+.aurora::after {
+  background: radial-gradient(circle at center, #8b5cf6 0%, transparent 70%);
+  top: -40px;
+  right: -120px;
+  animation-delay: -7s;
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(40px, 60px, 0) scale(1.15);
+  }
+}
+
+/* Dotted grid background (for dark sections) */
+.dot-grid {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  background-position: 0 0;
+}
+
+.dot-grid-light {
+  background-image: radial-gradient(
+    rgba(15, 23, 42, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Hairline gradient border card */
+.card-hairline {
+  position: relative;
+  background: var(--color-surface-white);
+  border-radius: 16px;
+}
+
+.card-hairline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.35),
+    rgba(139, 92, 246, 0.15) 40%,
+    rgba(226, 226, 226, 0.6) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(90deg, #4f46e5 0%, #8b5cf6 50%, #2563eb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass nav effect */
+.glass {
+  background: rgba(250, 250, 249, 0.72);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+}
+
+/* Shine sweep on gradient buttons */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.7s ease;
+}
+
+.btn-shine:hover::after {
+  transform: translateX(100%);
+}
+
+/* Soft elevated shadow */
+.shadow-soft {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04),
+    0 20px 40px -20px rgba(15, 23, 42, 0.15);
+}
+
+.shadow-soft-lg {
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04),
+    0 30px 60px -20px rgba(79, 70, 229, 0.25);
+}
+
+/* Scroll reveal helpers used by IntersectionObserver (progressive enhancement) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animated underline link */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Marquee for logo strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee 35s linear infinite;
 }

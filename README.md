@@ -38,7 +38,7 @@ Produces a static export in `out/`.
 src/
 ├── app/
 │   ├── page.tsx              # Home wrapper (server)
-│   ├── home-client.tsx       # Home sections: Hero, Research, Video Tour, Features, Question Types, Moat, FAQ, CTA
+│   ├── home-client.tsx       # Home sections: Hero, Research, Video Tour, Features, Question Types, Why It Works (3 illustrated cards), FAQ, CTA
 │   ├── layout.tsx            # Root layout (fonts, Navbar + Footer)
 │   ├── globals.css           # Tailwind + theme tokens + utility classes (aurora, dot-grid, gradient, etc.)
 │   ├── features/page.tsx     # AI features, question types, platform grid, STEM callout

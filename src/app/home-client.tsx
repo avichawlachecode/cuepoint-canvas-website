@@ -12,9 +12,6 @@ import {
   GitBranch,
   Target,
   Radar,
-  BrainCircuit,
-  Lock,
-  Rocket,
   CircleDot,
   SquareCheckBig,
   FlipHorizontal,
@@ -394,61 +391,239 @@ function QuestionTypesSection() {
   );
 }
 
-/* ─────────────────────────── MOAT ─────────────────────────── */
+/* ─────────────────────────── WHY IT WORKS ─────────────────────────── */
 
-const MOATS = [
+function IllustrationIntegration() {
+  return (
+    <svg
+      viewBox="0 0 240 160"
+      className="h-auto w-full max-w-[260px]"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Tablet outer */}
+      <rect
+        x="50"
+        y="30"
+        width="150"
+        height="110"
+        rx="8"
+        fill="#FCD34D"
+        stroke="#131B2E"
+        strokeWidth="3"
+      />
+      {/* Screen */}
+      <rect x="60" y="40" width="130" height="90" rx="3" fill="white" />
+      {/* Header bar */}
+      <rect x="68" y="50" width="50" height="5" rx="1.5" fill="#131B2E" />
+      {/* x marks */}
+      <path
+        d="M70 70 l6 6 M76 70 l-6 6 M82 70 l6 6 M88 70 l-6 6"
+        stroke="#131B2E"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      {/* check in row */}
+      <path
+        d="M98 72 l3 3 l7 -8"
+        stroke="#131B2E"
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Chart wave */}
+      <path
+        d="M68 108 L80 94 L90 102 L102 86 L118 100"
+        stroke="#131B2E"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Radio buttons */}
+      <circle cx="150" cy="72" r="3" stroke="#131B2E" strokeWidth="1.5" fill="none" />
+      <circle cx="150" cy="86" r="3" stroke="#131B2E" strokeWidth="1.5" fill="#131B2E" />
+      <circle cx="150" cy="100" r="3" stroke="#131B2E" strokeWidth="1.5" fill="none" />
+      {/* Check beside radios */}
+      <path
+        d="M168 86 l3 3 l6 -7"
+        stroke="#131B2E"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* OK-hand top-left */}
+      <circle cx="72" cy="24" r="11" fill="white" stroke="#131B2E" strokeWidth="2.5" />
+      <circle cx="72" cy="24" r="4.5" fill="none" stroke="#131B2E" strokeWidth="2" />
+      <path
+        d="M83 22 L89 18 M83 25 L90 25 M83 28 L89 32"
+        stroke="#131B2E"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      {/* Person peeking top-right */}
+      <circle cx="210" cy="38" r="13" fill="#C4B5FD" stroke="#131B2E" strokeWidth="2.5" />
+      <circle cx="206" cy="36" r="1.2" fill="#131B2E" />
+      <circle cx="214" cy="36" r="1.2" fill="#131B2E" />
+      <path d="M206 42 q4 3 8 0" stroke="#131B2E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      {/* Hair wisp */}
+      <path
+        d="M200 28 q4 -6 14 -4"
+        stroke="#131B2E"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function IllustrationAssessments() {
+  return (
+    <svg
+      viewBox="0 0 240 160"
+      className="h-auto w-full max-w-[200px]"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Tablet outer */}
+      <rect
+        x="75"
+        y="12"
+        width="100"
+        height="136"
+        rx="6"
+        fill="#FCD34D"
+        stroke="#131B2E"
+        strokeWidth="3"
+      />
+      {/* Screen */}
+      <rect x="82" y="20" width="86" height="114" rx="2" fill="white" />
+      {/* Header bar */}
+      <rect x="90" y="30" width="40" height="5" rx="1" fill="#131B2E" />
+      {/* Sliders */}
+      <line x1="90" y1="55" x2="155" y2="55" stroke="#131B2E" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="132" cy="55" r="4" fill="#131B2E" />
+      <line x1="90" y1="72" x2="155" y2="72" stroke="#131B2E" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="102" cy="72" r="4" fill="#131B2E" />
+      <line x1="90" y1="89" x2="155" y2="89" stroke="#131B2E" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="145" cy="89" r="4" fill="#131B2E" />
+      {/* Big checkmark */}
+      <path
+        d="M132 108 l6 6 l12 -14"
+        stroke="#131B2E"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Home dot */}
+      <circle cx="125" cy="142" r="3" fill="#131B2E" />
+    </svg>
+  );
+}
+
+function IllustrationTracking() {
+  return (
+    <svg
+      viewBox="0 0 240 160"
+      className="h-auto w-full max-w-[260px]"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Chart frame */}
+      <rect
+        x="30"
+        y="20"
+        width="180"
+        height="120"
+        rx="6"
+        fill="white"
+        stroke="#131B2E"
+        strokeWidth="3"
+      />
+      {/* Axes in yellow */}
+      <line x1="50" y1="32" x2="50" y2="124" stroke="#FCD34D" strokeWidth="4" strokeLinecap="round" />
+      <line x1="48" y1="122" x2="195" y2="122" stroke="#FCD34D" strokeWidth="4" strokeLinecap="round" />
+      {/* Zigzag line */}
+      <path
+        d="M60 108 L85 92 L100 100 L125 72 L150 82 L182 45"
+        stroke="#131B2E"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Arrowhead */}
+      <path
+        d="M182 45 L174 50 M182 45 L178 36"
+        stroke="#131B2E"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Check circle */}
+      <circle cx="170" cy="108" r="13" fill="none" stroke="#FCD34D" strokeWidth="3.5" />
+      <path
+        d="M164 108 l4 4 l7 -9"
+        stroke="#131B2E"
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+const WHY_CARDS = [
   {
-    icon: BrainCircuit,
-    title: "Compound AI advantage",
-    body: "Every instructor correction of an AI grade trains better grading. Every edited question improves generation.",
+    title: "Seamless Canvas Integration",
+    body: "Installs as an LTI 1.3 tool in under an hour. Embed questions inline on any Canvas page. Scores sync to the gradebook automatically — no exports, no extra tabs, no extra logins.",
+    illo: <IllustrationIntegration />,
   },
   {
-    icon: Lock,
-    title: "Switching cost via mastery data",
-    body: "After one semester: easy to leave. After three: painful. After six: irrational. Question banks, learning objective mapping, mastery baselines, and analytics history don't export. QTI gets your questions out — not your institutional intelligence.",
+    title: "Authentic, AI-Generated Assessments",
+    body: "From a topic or PDF, Claude drafts 14 question types including STEM math expressions and layered follow-ups. Author a full quiz in 60 seconds while staying in full control.",
+    illo: <IllustrationAssessments />,
   },
   {
-    icon: Rocket,
-    title: "Speed-of-innovation gap",
-    body: "Atomic's core engine is Learnosity — a separate company on a separate release cycle. When Claude ships a new model, CuePoint integrates it the same week. Atomic waits on Learnosity's roadmap. The faster AI moves, the wider this gap.",
+    title: "Track Student Mastery in Real-Time",
+    body: "Per-student, per-objective, per-Bloom's dashboards update as submissions come in. Ask plain-English questions about your data. Spot at-risk students before the midterm.",
+    illo: <IllustrationTracking />,
   },
 ];
 
-function MoatSection() {
+function WhyItWorksSection() {
   return (
-    <section className="relative overflow-hidden bg-surface-dark px-6 py-24 text-white">
-      <div className="aurora" />
-      <div className="dot-grid pointer-events-none absolute inset-0 opacity-30" />
-
-      <div className="relative mx-auto max-w-6xl">
+    <section className="bg-surface px-6 py-24">
+      <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <h2 className="font-display text-4xl font-bold leading-tight tracking-tight md:text-6xl">
-            Why CuePoint wins
+          <h2 className="font-display text-4xl font-bold leading-tight tracking-tight text-text md:text-6xl">
+            Built for how teaching
             <br />
-            over time, not just today
+            actually works.
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
-            Atomic can retrofit AI features. What they can&apos;t do is go back
-            in time — rebuild their architecture around AI, collect years of
-            grading corrections, or undo the Learnosity dependency that slows
-            their innovation cycle.
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">
+            Three capabilities, one purpose: meet instructors and students
+            where they already are — inside Canvas, today.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {MOATS.map((m) => (
-            <div
-              key={m.title}
-              className="group rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition-all hover:border-accent-500/35 hover:bg-white/[0.08]"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-600 to-accent-500 text-white">
-                <m.icon className="h-5 w-5" />
+        <div className="grid gap-10 md:grid-cols-3">
+          {WHY_CARDS.map((card) => (
+            <div key={card.title} className="flex flex-col">
+              <div className="mb-6 flex aspect-[5/3] items-center justify-center overflow-hidden rounded-3xl bg-[#E2DBFA] px-6 py-8">
+                {card.illo}
               </div>
-              <h3 className="mt-5 font-display text-xl font-bold leading-snug tracking-tight">
-                {m.title}
+              <h3 className="font-display text-xl font-bold leading-snug tracking-tight text-text md:text-2xl">
+                {card.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/70">
-                {m.body}
+              <p className="mt-3 text-base leading-relaxed text-text-muted">
+                {card.body}
               </p>
             </div>
           ))}
@@ -585,7 +760,7 @@ export default function HomeClient() {
       <VideoTourSection />
       <FeaturesSection />
       <QuestionTypesSection />
-      <MoatSection />
+      <WhyItWorksSection />
       <FAQSection />
       <CTASection />
     </>

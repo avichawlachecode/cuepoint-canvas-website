@@ -572,7 +572,7 @@ const STEPS = [
 
 function WhyItWorksSection() {
   return (
-    <section className="bg-surface-alt px-6 py-24">
+    <section className="bg-surface px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <h2 className="font-display text-4xl font-bold leading-tight tracking-tight text-text md:text-6xl">

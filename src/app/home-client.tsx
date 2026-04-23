@@ -393,188 +393,206 @@ function QuestionTypesSection() {
 
 /* ─────────────────────────── WHY IT WORKS ─────────────────────────── */
 
+/* Canvas page with CuePoint question embedded inline, syncing to gradebook */
 function IllustrationIntegration() {
   return (
     <svg
-      viewBox="0 0 240 160"
-      className="h-auto w-full max-w-[260px]"
+      viewBox="0 0 260 180"
+      className="h-auto w-full max-w-[300px]"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Tablet outer */}
+      {/* Browser window */}
       <rect
-        x="50"
-        y="30"
-        width="150"
-        height="110"
-        rx="8"
-        fill="#57DFFE"
-        stroke="#131B2E"
-        strokeWidth="3"
-      />
-      {/* Screen */}
-      <rect x="60" y="40" width="130" height="90" rx="3" fill="white" />
-      {/* Header bar */}
-      <rect x="68" y="50" width="50" height="5" rx="1.5" fill="#131B2E" />
-      {/* x marks */}
-      <path
-        d="M70 70 l6 6 M76 70 l-6 6 M82 70 l6 6 M88 70 l-6 6"
-        stroke="#131B2E"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      {/* check in row */}
-      <path
-        d="M98 72 l3 3 l7 -8"
+        x="20"
+        y="22"
+        width="180"
+        height="140"
+        rx="10"
+        fill="white"
         stroke="#131B2E"
         strokeWidth="2.5"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
       />
-      {/* Chart wave */}
+      {/* Top bar */}
       <path
-        d="M68 108 L80 94 L90 102 L102 86 L118 100"
-        stroke="#131B2E"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M20 32 Q20 22 30 22 L190 22 Q200 22 200 32 L200 40 L20 40 Z"
+        fill="#ECFEFF"
       />
-      {/* Radio buttons */}
-      <circle cx="150" cy="72" r="3" stroke="#131B2E" strokeWidth="1.5" fill="none" />
-      <circle cx="150" cy="86" r="3" stroke="#131B2E" strokeWidth="1.5" fill="#131B2E" />
-      <circle cx="150" cy="100" r="3" stroke="#131B2E" strokeWidth="1.5" fill="none" />
-      {/* Check beside radios */}
+      <line x1="20" y1="40" x2="200" y2="40" stroke="#131B2E" strokeWidth="2.5" />
+      <circle cx="30" cy="31" r="2" fill="#57DFFE" />
+      <circle cx="38" cy="31" r="2" fill="#57DFFE" />
+      <circle cx="46" cy="31" r="2" fill="#57DFFE" />
+      <rect x="58" y="27" width="60" height="8" rx="4" fill="white" stroke="#131B2E" strokeWidth="1" />
+
+      {/* Page content lines (muted) */}
+      <line x1="34" y1="54" x2="120" y2="54" stroke="#131B2E" strokeOpacity="0.25" strokeWidth="2" strokeLinecap="round" />
+      <line x1="34" y1="62" x2="150" y2="62" stroke="#131B2E" strokeOpacity="0.25" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Embedded CuePoint question block */}
+      <rect x="32" y="74" width="156" height="58" rx="8" fill="#CFFAFE" stroke="#00687A" strokeWidth="2" />
+      {/* AI badge */}
+      <rect x="40" y="80" width="36" height="12" rx="6" fill="#00687A" />
       <path
-        d="M168 86 l3 3 l6 -7"
-        stroke="#131B2E"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M49 86 L51 82 L53 86 L57 87 L53 88 L51 92 L49 88 L45 87 Z"
+        fill="white"
       />
-      {/* OK-hand top-left */}
-      <circle cx="72" cy="24" r="11" fill="white" stroke="#131B2E" strokeWidth="2.5" />
-      <circle cx="72" cy="24" r="4.5" fill="none" stroke="#131B2E" strokeWidth="2" />
-      <path
-        d="M83 22 L89 18 M83 25 L90 25 M83 28 L89 32"
-        stroke="#131B2E"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      {/* Person peeking top-right */}
-      <circle cx="210" cy="38" r="13" fill="#A5F3FC" stroke="#131B2E" strokeWidth="2.5" />
-      <circle cx="206" cy="36" r="1.2" fill="#131B2E" />
-      <circle cx="214" cy="36" r="1.2" fill="#131B2E" />
-      <path d="M206 42 q4 3 8 0" stroke="#131B2E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-      {/* Hair wisp */}
-      <path
-        d="M200 28 q4 -6 14 -4"
-        stroke="#131B2E"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      />
+      <line x1="62" y1="86" x2="70" y2="86" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Question text */}
+      <line x1="82" y1="86" x2="175" y2="86" stroke="#131B2E" strokeWidth="2" strokeLinecap="round" />
+      {/* Answer pills */}
+      <rect x="40" y="100" width="64" height="11" rx="5.5" fill="white" stroke="#131B2E" strokeWidth="1.5" />
+      <circle cx="48" cy="105.5" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
+      <rect x="112" y="100" width="64" height="11" rx="5.5" fill="#00687A" stroke="#00687A" strokeWidth="1.5" />
+      <circle cx="120" cy="105.5" r="2.5" fill="white" />
+      <rect x="40" y="115" width="64" height="11" rx="5.5" fill="white" stroke="#131B2E" strokeWidth="1.5" />
+      <circle cx="48" cy="120.5" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
+      <rect x="112" y="115" width="64" height="11" rx="5.5" fill="white" stroke="#131B2E" strokeWidth="1.5" />
+      <circle cx="120" cy="120.5" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
+
+      {/* Page content bottom */}
+      <line x1="34" y1="144" x2="130" y2="144" stroke="#131B2E" strokeOpacity="0.25" strokeWidth="2" strokeLinecap="round" />
+      <line x1="34" y1="152" x2="100" y2="152" stroke="#131B2E" strokeOpacity="0.25" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Sync arrow to gradebook */}
+      <path d="M205 96 L224 96" stroke="#00687A" strokeWidth="2" strokeLinecap="round" />
+      <path d="M220 92 L225 96 L220 100" stroke="#00687A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+      {/* Gradebook card */}
+      <rect x="226" y="74" width="30" height="44" rx="5" fill="white" stroke="#131B2E" strokeWidth="2" />
+      <rect x="230" y="80" width="22" height="3" rx="1" fill="#131B2E" />
+      <path d="M232 92 l2 2 l4 -5" stroke="#00687A" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="241" y1="93" x2="250" y2="93" stroke="#131B2E" strokeOpacity="0.5" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M232 103 l2 2 l4 -5" stroke="#00687A" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="241" y1="104" x2="250" y2="104" stroke="#131B2E" strokeOpacity="0.5" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M232 114 l2 2 l4 -5" stroke="#00687A" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="241" y1="115" x2="250" y2="115" stroke="#131B2E" strokeOpacity="0.5" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
+/* AI sparkle drafting a question card with multiple options */
 function IllustrationAssessments() {
   return (
     <svg
-      viewBox="0 0 240 160"
-      className="h-auto w-full max-w-[200px]"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Tablet outer */}
-      <rect
-        x="75"
-        y="12"
-        width="100"
-        height="136"
-        rx="6"
-        fill="#57DFFE"
-        stroke="#131B2E"
-        strokeWidth="3"
-      />
-      {/* Screen */}
-      <rect x="82" y="20" width="86" height="114" rx="2" fill="white" />
-      {/* Header bar */}
-      <rect x="90" y="30" width="40" height="5" rx="1" fill="#131B2E" />
-      {/* Sliders */}
-      <line x1="90" y1="55" x2="155" y2="55" stroke="#131B2E" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="132" cy="55" r="4" fill="#131B2E" />
-      <line x1="90" y1="72" x2="155" y2="72" stroke="#131B2E" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="102" cy="72" r="4" fill="#131B2E" />
-      <line x1="90" y1="89" x2="155" y2="89" stroke="#131B2E" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="145" cy="89" r="4" fill="#131B2E" />
-      {/* Big checkmark */}
-      <path
-        d="M132 108 l6 6 l12 -14"
-        stroke="#131B2E"
-        strokeWidth="3"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Home dot */}
-      <circle cx="125" cy="142" r="3" fill="#131B2E" />
-    </svg>
-  );
-}
-
-function IllustrationTracking() {
-  return (
-    <svg
-      viewBox="0 0 240 160"
+      viewBox="0 0 240 180"
       className="h-auto w-full max-w-[260px]"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Chart frame */}
+      {/* PDF/source doc (left) */}
+      <rect x="16" y="44" width="50" height="68" rx="5" fill="white" stroke="#131B2E" strokeWidth="2.5" />
+      <path d="M54 44 L66 56 L54 56 Z" fill="#CFFAFE" stroke="#131B2E" strokeWidth="2.5" strokeLinejoin="round" />
+      <line x1="24" y1="64" x2="56" y2="64" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
+      <line x1="24" y1="72" x2="58" y2="72" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
+      <line x1="24" y1="80" x2="52" y2="80" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
+      <line x1="24" y1="88" x2="58" y2="88" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
+      <line x1="24" y1="96" x2="48" y2="96" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
+
+      {/* AI sparkle cluster (middle) */}
+      <path
+        d="M94 78 L100 62 L106 78 L122 84 L106 90 L100 106 L94 90 L78 84 Z"
+        fill="#57DFFE"
+        stroke="#00687A"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M86 50 L88 44 L90 50 L96 52 L90 54 L88 60 L86 54 L80 52 Z"
+        fill="#CFFAFE"
+        stroke="#00687A"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M112 114 L114 108 L116 114 L122 116 L116 118 L114 124 L112 118 L106 116 Z"
+        fill="#CFFAFE"
+        stroke="#00687A"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+
+      {/* Generated question card (right) */}
+      <rect x="136" y="34" width="92" height="112" rx="8" fill="white" stroke="#131B2E" strokeWidth="2.5" />
+      {/* Header title */}
+      <rect x="146" y="44" width="44" height="5" rx="2" fill="#131B2E" />
+      <rect x="146" y="54" width="68" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.4" />
+      {/* Option rows */}
+      <rect x="146" y="68" width="72" height="12" rx="6" fill="white" stroke="#131B2E" strokeWidth="1.5" />
+      <circle cx="153" cy="74" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
+      <rect x="146" y="84" width="72" height="12" rx="6" fill="#CFFAFE" stroke="#00687A" strokeWidth="1.5" />
+      <circle cx="153" cy="90" r="2.5" fill="#00687A" />
+      <rect x="146" y="100" width="72" height="12" rx="6" fill="white" stroke="#131B2E" strokeWidth="1.5" />
+      <circle cx="153" cy="106" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
+      <rect x="146" y="116" width="72" height="12" rx="6" fill="white" stroke="#131B2E" strokeWidth="1.5" />
+      <circle cx="153" cy="122" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
+      {/* AI tag bottom */}
+      <rect x="146" y="132" width="32" height="8" rx="4" fill="#00687A" />
+      <circle cx="150" cy="136" r="1.5" fill="white" />
+    </svg>
+  );
+}
+
+/* Mastery dashboard: student rows with progress bars + at-risk indicator */
+function IllustrationTracking() {
+  return (
+    <svg
+      viewBox="0 0 260 180"
+      className="h-auto w-full max-w-[300px]"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Dashboard frame */}
       <rect
-        x="30"
-        y="20"
-        width="180"
-        height="120"
-        rx="6"
+        x="20"
+        y="22"
+        width="220"
+        height="140"
+        rx="10"
         fill="white"
         stroke="#131B2E"
-        strokeWidth="3"
-      />
-      {/* Axes in yellow */}
-      <line x1="50" y1="32" x2="50" y2="124" stroke="#57DFFE" strokeWidth="4" strokeLinecap="round" />
-      <line x1="48" y1="122" x2="195" y2="122" stroke="#57DFFE" strokeWidth="4" strokeLinecap="round" />
-      {/* Zigzag line */}
-      <path
-        d="M60 108 L85 92 L100 100 L125 72 L150 82 L182 45"
-        stroke="#131B2E"
-        strokeWidth="3"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Arrowhead */}
-      <path
-        d="M182 45 L174 50 M182 45 L178 36"
-        stroke="#131B2E"
-        strokeWidth="3"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Check circle */}
-      <circle cx="170" cy="108" r="13" fill="none" stroke="#57DFFE" strokeWidth="3.5" />
-      <path
-        d="M164 108 l4 4 l7 -9"
-        stroke="#131B2E"
         strokeWidth="2.5"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
       />
+      {/* Header bar */}
+      <line x1="20" y1="46" x2="240" y2="46" stroke="#131B2E" strokeWidth="2" />
+      <rect x="32" y="32" width="56" height="6" rx="2" fill="#131B2E" />
+      <rect x="96" y="32" width="24" height="6" rx="2" fill="#131B2E" fillOpacity="0.35" />
+      {/* Live indicator */}
+      <circle cx="218" cy="35" r="3.5" fill="#00687A" />
+      <rect x="196" y="32" width="14" height="6" rx="2" fill="#131B2E" fillOpacity="0.35" />
+
+      {/* Row 1 — mastered */}
+      <circle cx="38" cy="64" r="6" fill="#00687A" />
+      <rect x="50" y="60" width="44" height="3.5" rx="1.5" fill="#131B2E" />
+      <rect x="50" y="67" width="28" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.35" />
+      <rect x="118" y="60" width="102" height="8" rx="4" fill="#ECFEFF" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1" />
+      <rect x="118" y="60" width="88" height="8" rx="4" fill="#00687A" />
+      <path d="M224 62 l3 3 l5 -6" stroke="#00687A" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+
+      {/* Row 2 — progressing */}
+      <circle cx="38" cy="88" r="6" fill="#57DFFE" />
+      <rect x="50" y="84" width="38" height="3.5" rx="1.5" fill="#131B2E" />
+      <rect x="50" y="91" width="32" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.35" />
+      <rect x="118" y="84" width="102" height="8" rx="4" fill="#ECFEFF" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1" />
+      <rect x="118" y="84" width="62" height="8" rx="4" fill="#57DFFE" />
+
+      {/* Row 3 — at-risk */}
+      <circle cx="38" cy="112" r="6" fill="white" stroke="#131B2E" strokeWidth="1.8" />
+      <rect x="50" y="108" width="42" height="3.5" rx="1.5" fill="#131B2E" />
+      <rect x="50" y="115" width="26" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.35" />
+      <rect x="118" y="108" width="102" height="8" rx="4" fill="#ECFEFF" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1" />
+      <rect x="118" y="108" width="28" height="8" rx="4" fill="#131B2E" fillOpacity="0.45" />
+      {/* Alert flag */}
+      <circle cx="228" cy="112" r="6" fill="#131B2E" />
+      <rect x="227.2" y="108.5" width="1.6" height="4.5" rx="0.8" fill="white" />
+      <circle cx="228" cy="115" r="0.9" fill="white" />
+
+      {/* Row 4 — mastered */}
+      <circle cx="38" cy="136" r="6" fill="#00687A" />
+      <rect x="50" y="132" width="48" height="3.5" rx="1.5" fill="#131B2E" />
+      <rect x="50" y="139" width="34" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.35" />
+      <rect x="118" y="132" width="102" height="8" rx="4" fill="#ECFEFF" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1" />
+      <rect x="118" y="132" width="96" height="8" rx="4" fill="#00687A" />
+      <path d="M224 134 l3 3 l5 -6" stroke="#00687A" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

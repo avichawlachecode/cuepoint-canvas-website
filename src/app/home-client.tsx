@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import {
   ArrowRight,
   Play,
   Check,
   Sparkles,
   CheckCircle,
+  ChevronRight,
   Timer,
   GitBranch,
   Target,
@@ -391,227 +392,178 @@ function QuestionTypesSection() {
   );
 }
 
-/* ─────────────────────────── WHY IT WORKS ─────────────────────────── */
+/* ─────────────────────────── HOW IT FLOWS ─────────────────────────── */
 
-/* Canvas page with CuePoint question embedded inline, syncing to gradebook */
-function IllustrationIntegration() {
+/* Reusable browser window chrome */
+function BrowserFrame({ children }: { children: React.ReactNode }) {
   return (
     <svg
-      viewBox="0 0 260 180"
-      className="h-auto w-full max-w-[300px]"
+      viewBox="0 0 280 200"
+      className="h-auto w-full max-w-[320px]"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Browser window */}
       <rect
-        x="20"
-        y="22"
-        width="180"
-        height="140"
+        x="10"
+        y="18"
+        width="260"
+        height="160"
+        rx="12"
+        fill="white"
+        stroke="#E4E7EF"
+        strokeWidth="1.5"
+      />
+      <line x1="10" y1="46" x2="270" y2="46" stroke="#E4E7EF" strokeWidth="1.5" />
+      <circle cx="28" cy="32" r="4" fill="#FF5F57" />
+      <circle cx="42" cy="32" r="4" fill="#FEBC2E" />
+      <circle cx="56" cy="32" r="4" fill="#28C840" />
+      {children}
+    </svg>
+  );
+}
+
+/* Step 1 — Create with AI: two document cards side-by-side */
+function IllustrationCreate() {
+  return (
+    <BrowserFrame>
+      {/* Left card (source) */}
+      <rect x="78" y="72" width="58" height="80" rx="8" fill="white" stroke="#E4E7EF" strokeWidth="1.2" />
+      <rect x="90" y="88" width="34" height="5" rx="2.5" fill="#131B2E" />
+      <rect x="90" y="102" width="28" height="3.5" rx="1.75" fill="#131B2E" fillOpacity="0.2" />
+      <rect x="90" y="112" width="32" height="3.5" rx="1.75" fill="#131B2E" fillOpacity="0.2" />
+
+      {/* Right card (generated) */}
+      <rect x="144" y="72" width="58" height="80" rx="8" fill="white" stroke="#E4E7EF" strokeWidth="1.2" />
+      <rect x="156" y="88" width="34" height="5" rx="2.5" fill="#131B2E" />
+      <rect x="156" y="102" width="34" height="3.5" rx="1.75" fill="#131B2E" fillOpacity="0.45" />
+      <rect x="156" y="112" width="34" height="3.5" rx="1.75" fill="#131B2E" fillOpacity="0.45" />
+      <rect x="156" y="122" width="26" height="3.5" rx="1.75" fill="#131B2E" fillOpacity="0.45" />
+      <circle cx="192" cy="142" r="3" fill="#131B2E" fillOpacity="0.2" />
+    </BrowserFrame>
+  );
+}
+
+/* Step 2 — Embed inside LMS: question card with options + check badge */
+function IllustrationEmbed() {
+  return (
+    <BrowserFrame>
+      {/* Question card */}
+      <rect
+        x="68"
+        y="62"
+        width="144"
+        height="100"
         rx="10"
         fill="white"
-        stroke="#131B2E"
+        stroke="#57DFFE"
+        strokeWidth="2"
+      />
+      {/* 4 option rows */}
+      <circle cx="82" cy="80" r="4" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1.5" fill="none" />
+      <rect x="92" y="77" width="72" height="6" rx="3" fill="#131B2E" fillOpacity="0.12" />
+
+      <circle cx="82" cy="96" r="4" fill="#00687A" />
+      <rect x="92" y="93" width="58" height="6" rx="3" fill="#131B2E" fillOpacity="0.22" />
+
+      <circle cx="82" cy="112" r="4" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1.5" fill="none" />
+      <rect x="92" y="109" width="66" height="6" rx="3" fill="#131B2E" fillOpacity="0.12" />
+
+      <circle cx="82" cy="128" r="4" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1.5" fill="none" />
+      <rect x="92" y="125" width="54" height="6" rx="3" fill="#131B2E" fillOpacity="0.12" />
+
+      {/* Check badge */}
+      <circle cx="196" cy="148" r="13" fill="#00687A" />
+      <path
+        d="M190 148 l4 4 l8 -9"
+        stroke="white"
         strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      {/* Top bar */}
-      <path
-        d="M20 32 Q20 22 30 22 L190 22 Q200 22 200 32 L200 40 L20 40 Z"
-        fill="#ECFEFF"
-      />
-      <line x1="20" y1="40" x2="200" y2="40" stroke="#131B2E" strokeWidth="2.5" />
-      <circle cx="30" cy="31" r="2" fill="#57DFFE" />
-      <circle cx="38" cy="31" r="2" fill="#57DFFE" />
-      <circle cx="46" cy="31" r="2" fill="#57DFFE" />
-      <rect x="58" y="27" width="60" height="8" rx="4" fill="white" stroke="#131B2E" strokeWidth="1" />
-
-      {/* Page content lines (muted) */}
-      <line x1="34" y1="54" x2="120" y2="54" stroke="#131B2E" strokeOpacity="0.25" strokeWidth="2" strokeLinecap="round" />
-      <line x1="34" y1="62" x2="150" y2="62" stroke="#131B2E" strokeOpacity="0.25" strokeWidth="2" strokeLinecap="round" />
-
-      {/* Embedded CuePoint question block */}
-      <rect x="32" y="74" width="156" height="58" rx="8" fill="#CFFAFE" stroke="#00687A" strokeWidth="2" />
-      {/* AI badge */}
-      <rect x="40" y="80" width="36" height="12" rx="6" fill="#00687A" />
-      <path
-        d="M49 86 L51 82 L53 86 L57 87 L53 88 L51 92 L49 88 L45 87 Z"
-        fill="white"
-      />
-      <line x1="62" y1="86" x2="70" y2="86" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Question text */}
-      <line x1="82" y1="86" x2="175" y2="86" stroke="#131B2E" strokeWidth="2" strokeLinecap="round" />
-      {/* Answer pills */}
-      <rect x="40" y="100" width="64" height="11" rx="5.5" fill="white" stroke="#131B2E" strokeWidth="1.5" />
-      <circle cx="48" cy="105.5" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
-      <rect x="112" y="100" width="64" height="11" rx="5.5" fill="#00687A" stroke="#00687A" strokeWidth="1.5" />
-      <circle cx="120" cy="105.5" r="2.5" fill="white" />
-      <rect x="40" y="115" width="64" height="11" rx="5.5" fill="white" stroke="#131B2E" strokeWidth="1.5" />
-      <circle cx="48" cy="120.5" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
-      <rect x="112" y="115" width="64" height="11" rx="5.5" fill="white" stroke="#131B2E" strokeWidth="1.5" />
-      <circle cx="120" cy="120.5" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
-
-      {/* Page content bottom */}
-      <line x1="34" y1="144" x2="130" y2="144" stroke="#131B2E" strokeOpacity="0.25" strokeWidth="2" strokeLinecap="round" />
-      <line x1="34" y1="152" x2="100" y2="152" stroke="#131B2E" strokeOpacity="0.25" strokeWidth="2" strokeLinecap="round" />
-
-      {/* Sync arrow to gradebook */}
-      <path d="M205 96 L224 96" stroke="#00687A" strokeWidth="2" strokeLinecap="round" />
-      <path d="M220 92 L225 96 L220 100" stroke="#00687A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-
-      {/* Gradebook card */}
-      <rect x="226" y="74" width="30" height="44" rx="5" fill="white" stroke="#131B2E" strokeWidth="2" />
-      <rect x="230" y="80" width="22" height="3" rx="1" fill="#131B2E" />
-      <path d="M232 92 l2 2 l4 -5" stroke="#00687A" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <line x1="241" y1="93" x2="250" y2="93" stroke="#131B2E" strokeOpacity="0.5" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M232 103 l2 2 l4 -5" stroke="#00687A" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <line x1="241" y1="104" x2="250" y2="104" stroke="#131B2E" strokeOpacity="0.5" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M232 114 l2 2 l4 -5" stroke="#00687A" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <line x1="241" y1="115" x2="250" y2="115" stroke="#131B2E" strokeOpacity="0.5" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
+    </BrowserFrame>
   );
 }
 
-/* AI sparkle drafting a question card with multiple options */
-function IllustrationAssessments() {
+/* Step 3 — Analyze & Improve: dashboard with 4 mastery rows */
+function IllustrationAnalyze() {
+  const rows = [
+    { pct: 0.88, checked: true },
+    { pct: 0.0, checked: false },
+    { pct: 0.86, checked: true },
+    { pct: 0.0, checked: false },
+  ];
   return (
-    <svg
-      viewBox="0 0 240 180"
-      className="h-auto w-full max-w-[260px]"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* PDF/source doc (left) */}
-      <rect x="16" y="44" width="50" height="68" rx="5" fill="white" stroke="#131B2E" strokeWidth="2.5" />
-      <path d="M54 44 L66 56 L54 56 Z" fill="#CFFAFE" stroke="#131B2E" strokeWidth="2.5" strokeLinejoin="round" />
-      <line x1="24" y1="64" x2="56" y2="64" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
-      <line x1="24" y1="72" x2="58" y2="72" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
-      <line x1="24" y1="80" x2="52" y2="80" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
-      <line x1="24" y1="88" x2="58" y2="88" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
-      <line x1="24" y1="96" x2="48" y2="96" stroke="#131B2E" strokeOpacity="0.4" strokeWidth="1.8" strokeLinecap="round" />
-
-      {/* AI sparkle cluster (middle) */}
-      <path
-        d="M94 78 L100 62 L106 78 L122 84 L106 90 L100 106 L94 90 L78 84 Z"
-        fill="#57DFFE"
-        stroke="#00687A"
-        strokeWidth="2.5"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M86 50 L88 44 L90 50 L96 52 L90 54 L88 60 L86 54 L80 52 Z"
-        fill="#CFFAFE"
-        stroke="#00687A"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M112 114 L114 108 L116 114 L122 116 L116 118 L114 124 L112 118 L106 116 Z"
-        fill="#CFFAFE"
-        stroke="#00687A"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-
-      {/* Generated question card (right) */}
-      <rect x="136" y="34" width="92" height="112" rx="8" fill="white" stroke="#131B2E" strokeWidth="2.5" />
-      {/* Header title */}
-      <rect x="146" y="44" width="44" height="5" rx="2" fill="#131B2E" />
-      <rect x="146" y="54" width="68" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.4" />
-      {/* Option rows */}
-      <rect x="146" y="68" width="72" height="12" rx="6" fill="white" stroke="#131B2E" strokeWidth="1.5" />
-      <circle cx="153" cy="74" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
-      <rect x="146" y="84" width="72" height="12" rx="6" fill="#CFFAFE" stroke="#00687A" strokeWidth="1.5" />
-      <circle cx="153" cy="90" r="2.5" fill="#00687A" />
-      <rect x="146" y="100" width="72" height="12" rx="6" fill="white" stroke="#131B2E" strokeWidth="1.5" />
-      <circle cx="153" cy="106" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
-      <rect x="146" y="116" width="72" height="12" rx="6" fill="white" stroke="#131B2E" strokeWidth="1.5" />
-      <circle cx="153" cy="122" r="2.5" stroke="#131B2E" strokeWidth="1.5" fill="none" />
-      {/* AI tag bottom */}
-      <rect x="146" y="132" width="32" height="8" rx="4" fill="#00687A" />
-      <circle cx="150" cy="136" r="1.5" fill="white" />
-    </svg>
+    <BrowserFrame>
+      {rows.map((r, i) => {
+        const y = 74 + i * 22;
+        return (
+          <g key={i}>
+            {/* Avatar dot */}
+            <circle cx="36" cy={y} r="4.5" fill="#00687A" />
+            {/* Name line */}
+            <rect x="48" y={y - 3} width="54" height="6" rx="3" fill="#131B2E" fillOpacity="0.1" />
+            {/* Progress bar track */}
+            <rect x="116" y={y - 4} width="110" height="8" rx="4" fill="#131B2E" fillOpacity="0.08" />
+            {/* Progress bar fill (teal gradient via layered rects) */}
+            {r.pct > 0 && (
+              <>
+                <rect
+                  x="116"
+                  y={y - 4}
+                  width={110 * r.pct}
+                  height="8"
+                  rx="4"
+                  fill="#00687A"
+                />
+              </>
+            )}
+            {/* Status icon */}
+            {r.checked ? (
+              <>
+                <circle cx="240" cy={y} r="7" fill="#00687A" />
+                <path
+                  d={`M236 ${y} l3 3 l5 -6`}
+                  stroke="white"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </>
+            ) : (
+              <circle
+                cx="240"
+                cy={y}
+                r="6"
+                stroke="#131B2E"
+                strokeOpacity="0.3"
+                strokeWidth="1.5"
+                fill="none"
+              />
+            )}
+          </g>
+        );
+      })}
+    </BrowserFrame>
   );
 }
 
-/* Mastery dashboard: student rows with progress bars + at-risk indicator */
-function IllustrationTracking() {
-  return (
-    <svg
-      viewBox="0 0 260 180"
-      className="h-auto w-full max-w-[300px]"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Dashboard frame */}
-      <rect
-        x="20"
-        y="22"
-        width="220"
-        height="140"
-        rx="10"
-        fill="white"
-        stroke="#131B2E"
-        strokeWidth="2.5"
-      />
-      {/* Header bar */}
-      <line x1="20" y1="46" x2="240" y2="46" stroke="#131B2E" strokeWidth="2" />
-      <rect x="32" y="32" width="56" height="6" rx="2" fill="#131B2E" />
-      <rect x="96" y="32" width="24" height="6" rx="2" fill="#131B2E" fillOpacity="0.35" />
-      {/* Live indicator */}
-      <circle cx="218" cy="35" r="3.5" fill="#00687A" />
-      <rect x="196" y="32" width="14" height="6" rx="2" fill="#131B2E" fillOpacity="0.35" />
-
-      {/* Row 1 — mastered */}
-      <circle cx="38" cy="64" r="6" fill="#00687A" />
-      <rect x="50" y="60" width="44" height="3.5" rx="1.5" fill="#131B2E" />
-      <rect x="50" y="67" width="28" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.35" />
-      <rect x="118" y="60" width="102" height="8" rx="4" fill="#ECFEFF" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1" />
-      <rect x="118" y="60" width="88" height="8" rx="4" fill="#00687A" />
-      <path d="M224 62 l3 3 l5 -6" stroke="#00687A" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-
-      {/* Row 2 — progressing */}
-      <circle cx="38" cy="88" r="6" fill="#57DFFE" />
-      <rect x="50" y="84" width="38" height="3.5" rx="1.5" fill="#131B2E" />
-      <rect x="50" y="91" width="32" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.35" />
-      <rect x="118" y="84" width="102" height="8" rx="4" fill="#ECFEFF" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1" />
-      <rect x="118" y="84" width="62" height="8" rx="4" fill="#57DFFE" />
-
-      {/* Row 3 — at-risk */}
-      <circle cx="38" cy="112" r="6" fill="white" stroke="#131B2E" strokeWidth="1.8" />
-      <rect x="50" y="108" width="42" height="3.5" rx="1.5" fill="#131B2E" />
-      <rect x="50" y="115" width="26" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.35" />
-      <rect x="118" y="108" width="102" height="8" rx="4" fill="#ECFEFF" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1" />
-      <rect x="118" y="108" width="28" height="8" rx="4" fill="#131B2E" fillOpacity="0.45" />
-      {/* Alert flag */}
-      <circle cx="228" cy="112" r="6" fill="#131B2E" />
-      <rect x="227.2" y="108.5" width="1.6" height="4.5" rx="0.8" fill="white" />
-      <circle cx="228" cy="115" r="0.9" fill="white" />
-
-      {/* Row 4 — mastered */}
-      <circle cx="38" cy="136" r="6" fill="#00687A" />
-      <rect x="50" y="132" width="48" height="3.5" rx="1.5" fill="#131B2E" />
-      <rect x="50" y="139" width="34" height="3" rx="1.5" fill="#131B2E" fillOpacity="0.35" />
-      <rect x="118" y="132" width="102" height="8" rx="4" fill="#ECFEFF" stroke="#131B2E" strokeOpacity="0.3" strokeWidth="1" />
-      <rect x="118" y="132" width="96" height="8" rx="4" fill="#00687A" />
-      <path d="M224 134 l3 3 l5 -6" stroke="#00687A" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-const WHY_CARDS = [
+const STEPS = [
   {
-    title: "Seamless Canvas Integration",
-    body: "Installs as an LTI 1.3 tool in under an hour. Embed questions inline on any Canvas page. Scores sync to the gradebook automatically — no exports, no extra tabs, no extra logins.",
-    illo: <IllustrationIntegration />,
+    title: "Create with AI",
+    caption: "Paste topic or PDF",
+    illo: <IllustrationCreate />,
   },
   {
-    title: "Authentic, AI-Generated Assessments",
-    body: "From a topic or PDF, Claude drafts 14 question types including STEM math expressions and layered follow-ups. Author a full quiz in 60 seconds while staying in full control.",
-    illo: <IllustrationAssessments />,
+    title: "Embed inside LMS",
+    caption: "Questions appear inline",
+    illo: <IllustrationEmbed />,
   },
   {
-    title: "Track Student Mastery in Real-Time",
-    body: "Per-student, per-objective, per-Bloom's dashboards update as submissions come in. Ask plain-English questions about your data. Spot at-risk students before the midterm.",
-    illo: <IllustrationTracking />,
+    title: "Analyze & Improve",
+    caption: "Track mastery per objective",
+    illo: <IllustrationAnalyze />,
   },
 ];
 
@@ -626,24 +578,27 @@ function WhyItWorksSection() {
             actually works.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">
-            Three capabilities, one purpose: meet instructors and students
-            where they already are — inside Canvas, today.
+            Three steps, one workflow: meet instructors and students where they
+            already are — inside Canvas, today.
           </p>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-3">
-          {WHY_CARDS.map((card) => (
-            <div key={card.title} className="flex flex-col">
-              <div className="mb-6 flex aspect-[5/3] items-center justify-center overflow-hidden rounded-3xl bg-brand-50 px-6 py-8">
-                {card.illo}
+        <div className="flex flex-col items-center gap-12 md:flex-row md:items-start md:justify-between md:gap-2">
+          {STEPS.map((step, i) => (
+            <Fragment key={step.title}>
+              {i > 0 && (
+                <div className="hidden shrink-0 items-center justify-center pt-24 md:flex">
+                  <ChevronRight className="h-7 w-7 text-text-muted/40" />
+                </div>
+              )}
+              <div className="flex flex-1 flex-col items-center text-center">
+                <div className="w-full max-w-[320px]">{step.illo}</div>
+                <h3 className="mt-8 font-display text-lg font-bold text-text">
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-sm text-text-muted">{step.caption}</p>
               </div>
-              <h3 className="font-display text-xl font-bold leading-snug tracking-tight text-text md:text-2xl">
-                {card.title}
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-text-muted">
-                {card.body}
-              </p>
-            </div>
+            </Fragment>
           ))}
         </div>
       </div>

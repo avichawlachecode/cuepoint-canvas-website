@@ -1,38 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import "./globals.css";
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-jakarta",
   display: "swap",
-});
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-inter-tight",
-  display: "swap",
-  weight: ["500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "CuePoint — AI-Native Assessments for Canvas LMS",
+  title: "CuePoint — Inline Active Learning for Canvas LMS",
   description:
-    "Create a full quiz in 60 seconds. AI grades the essays. Scores flow straight to Canvas. The AI-native assessment tool built for modern higher-ed.",
+    "Embed AI-generated questions directly inside your LMS pages. Instant feedback, mastery tracking, AI essay grading with rationale. No separate portal. No extra tab. Right on cue.",
   metadataBase: new URL("https://cuepoint.app"),
   openGraph: {
-    title: "CuePoint — AI-Native Assessments for Canvas LMS",
+    title: "CuePoint — Inline Active Learning for Canvas LMS",
     description:
-      "Create a full quiz in 60 seconds. AI grades the essays. Scores flow straight to Canvas.",
+      "Embed AI-generated questions directly inside your LMS pages. Instant feedback. Mastery per objective. Essays graded with rationale.",
     type: "website",
   },
 };
@@ -45,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
+      className={`${jakarta.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen antialiased">
         <Navbar />

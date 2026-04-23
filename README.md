@@ -10,7 +10,7 @@ Live at: [cuepoint-canvas-website](https://github.com/avichawlachecode/cuepoint-
 - **React 19**
 - **Tailwind CSS 4** (via `@tailwindcss/postcss`)
 - **Lucide React** for icons
-- **next/font** — Inter, Inter Tight (display), JetBrains Mono (mono)
+- **next/font** — Plus Jakarta Sans (display + body), JetBrains Mono (mono)
 - **TypeScript**
 
 No backend, no database, no auth — purely a static marketing site.
@@ -37,31 +37,32 @@ Produces a static export in `out/`.
 ```
 src/
 ├── app/
-│   ├── page.tsx              # Home — hero, bento features, comparison, stepper, stats, testimonial, CTA
+│   ├── page.tsx              # Home wrapper (server)
+│   ├── home-client.tsx       # Home sections: Hero, Research, Video Tour, Features, Question Types, Moat, FAQ, CTA
 │   ├── layout.tsx            # Root layout (fonts, Navbar + Footer)
 │   ├── globals.css           # Tailwind + theme tokens + utility classes (aurora, dot-grid, gradient, etc.)
 │   ├── features/page.tsx     # AI features, question types, platform grid, STEM callout
 │   ├── how-it-works/page.tsx # Stepper + detailed walkthrough + rollout timeline
 │   ├── security/page.tsx     # 6 pillars, controls table, FERPA list, architecture
 │   ├── pricing/page.tsx      # 3 tiers (Institution highlighted), FAQ accordion
-│   └── contact/page.tsx      # Demo form with floating labels + segmented interest picker
+│   └── contact/page.tsx      # Demo form with segmented interest picker
 ├── components/
-│   ├── navbar.tsx            # Sticky glass nav, logo dot, Sign in + gradient Request Demo CTA
-│   ├── footer.tsx            # Newsletter strip, 4 columns, socials, oversized wordmark
+│   ├── navbar.tsx            # Sticky glass nav with gradient logo + Request Demo CTA
+│   ├── footer.tsx            # 4 columns, socials, minimalist bottom bar
 │   ├── section.tsx           # Section / SectionLabel (chip) / SectionTitle / SectionDescription
 │   ├── ui.tsx                # PrimaryButton, GhostButton, Chip, Stat, BentoCard, StepDot, Eyebrow
-│   └── product-mock.tsx      # EditorMock + bento mini UIs (question, analytics, STEM, gradebook, security)
+│   └── product-mock.tsx      # EditorMock + mini UI snippets (unused on home since redesign, kept for reuse)
 └── content/                  # Reference docs
 ```
 
 ## Navigation
 
-- **Navbar**: Features, How It Works, Pricing · Sign in · Request Demo (gradient CTA)
+- **Navbar**: Features, Who It's For, Pricing · Request Demo (gradient CTA)
 - **Footer**
-  - Product: Features, How It Works, Pricing
-  - Resources: Security, Documentation, Case Studies, Blog, FAQ
-  - Company: About, Contact, Privacy Policy, Terms of Service
-  - Newsletter signup strip + social icons + oversized wordmark at bottom
+  - Product: Features, Who It's For, Pricing
+  - Resources: Documentation, Research, Security, API Reference, Support
+  - Company: About, Contact, Privacy, Terms
+  - Socials (Twitter, LinkedIn, GitHub) + dot-grid background
 
 ## Design system
 
@@ -71,24 +72,25 @@ Defined in `src/app/globals.css` via `@theme`. Aesthetic reference: Linear, Noti
 
 | Token | Value | Notes |
 | --- | --- | --- |
-| `brand-600` | `#4f46e5` | Primary indigo |
-| `brand-500` | `#6366f1` | |
-| `accent-500` | `#8b5cf6` | Violet accent |
-| `electric-600` | `#2563eb` | Paired with indigo in gradients |
-| `lime-400` | `#a3e635` | AI/active highlights |
-| `surface` | `#fafaf9` | Warm off-white |
-| `surface-alt` | `#f4f4f2` | Section alternation |
-| `surface-dark` | `#0a0a0f` | Near-black w/ blue tint |
-| `surface-dark-alt` | `#12131a` | Nested dark surfaces |
-| `text` | `#0f172a` | |
-| `text-muted` | `#64748b` | |
-| `border` | `#e4e4e7` | |
+| `brand-600` | `#00687a` | Primary teal |
+| `brand-500` | `#06b6d4` | Mid-cyan |
+| `brand-700` | `#055561` | Deep teal |
+| `accent-500` | `#57dffe` | Bright cyan accent (pairs with brand-600 in gradients) |
+| `lime-400` | `#a3e635` | AI highlight |
+| `surface` | `#faf8ff` | Warm purple-tinted off-white |
+| `surface-alt` | `#f2f3ff` | Section alternation |
+| `surface-container` | `#eaedff` | |
+| `surface-dark` | `#131b2e` | Deep navy-purple |
+| `surface-dark-alt` | `#1a2540` | Nested dark surfaces |
+| `text` | `#131b2e` | |
+| `text-muted` | `#45464d` | |
+| `border` | `#c6c6cd` | |
+| `border-soft` | `#e0e1e8` | |
 
 ### Typography
 
-- **Display**: `Inter Tight` (weights 500–800), tight tracking (-0.03em) — headlines, section titles
-- **Body**: `Inter` — default sans-serif
-- **Mono**: `JetBrains Mono` — chips, stats, code, eyebrow labels
+- **Display + Body**: `Plus Jakarta Sans` (weights 300–800), tracking -0.02em
+- **Mono**: `JetBrains Mono` — chips, stats, citations, eyebrow labels
 
 ### Utility classes (globals.css)
 

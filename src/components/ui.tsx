@@ -13,7 +13,7 @@ export function PrimaryButton({ href, children, className = "" }: BtnProps) {
   return (
     <Link
       href={href}
-      className={`btn-shine inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-600 via-brand-500 to-electric-600 px-7 py-3.5 text-sm font-semibold text-white shadow-soft-lg transition-transform hover:-translate-y-0.5 ${className}`}
+      className={`btn-shine inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-brand-600 to-accent-500 px-7 py-3.5 text-sm font-semibold text-white shadow-soft-lg transition-transform hover:-translate-y-0.5 ${className}`}
     >
       {children}
       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

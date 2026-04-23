@@ -553,23 +553,26 @@ const STEPS = [
   {
     title: "Create with AI",
     caption: "Paste topic or PDF",
+    body: "Claude drafts 14 question types from your topic, PDF, or lecture notes in under 60 seconds. Review, tweak, publish — instructor fully in control at every step.",
     illo: <IllustrationCreate />,
   },
   {
     title: "Embed inside LMS",
     caption: "Questions appear inline",
+    body: "LTI 1.3 deep-linking drops questions directly on any Canvas page. Students never leave the course view. Scores sync to the gradebook automatically.",
     illo: <IllustrationEmbed />,
   },
   {
     title: "Analyze & Improve",
     caption: "Track mastery per objective",
+    body: "Per-student, per-objective, per-Bloom's-level dashboards update in real time. Ask plain-English questions about your data. Spot at-risk students early.",
     illo: <IllustrationAnalyze />,
   },
 ];
 
 function WhyItWorksSection() {
   return (
-    <section className="bg-surface px-6 py-24">
+    <section className="bg-surface-alt px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <h2 className="font-display text-4xl font-bold leading-tight tracking-tight text-text md:text-6xl">
@@ -583,7 +586,7 @@ function WhyItWorksSection() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-12 md:flex-row md:items-start md:justify-between md:gap-2">
+        <div className="flex flex-col items-center gap-14 md:flex-row md:items-start md:justify-between md:gap-2">
           {STEPS.map((step, i) => (
             <Fragment key={step.title}>
               {i > 0 && (
@@ -591,12 +594,17 @@ function WhyItWorksSection() {
                   <ChevronRight className="h-7 w-7 text-text-muted/40" />
                 </div>
               )}
-              <div className="flex flex-1 flex-col items-center text-center">
+              <div className="flex max-w-sm flex-1 flex-col items-center text-center">
                 <div className="w-full max-w-[320px]">{step.illo}</div>
-                <h3 className="mt-8 font-display text-lg font-bold text-text">
+                <h3 className="mt-8 font-display text-xl font-bold text-text">
                   {step.title}
                 </h3>
-                <p className="mt-1 text-sm text-text-muted">{step.caption}</p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-[0.15em] text-brand-600">
+                  {step.caption}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-text-muted">
+                  {step.body}
+                </p>
               </div>
             </Fragment>
           ))}

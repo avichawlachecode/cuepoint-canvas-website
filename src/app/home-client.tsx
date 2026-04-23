@@ -408,7 +408,7 @@ function IllustrationIntegration() {
         width="150"
         height="110"
         rx="8"
-        fill="#FCD34D"
+        fill="#57DFFE"
         stroke="#131B2E"
         strokeWidth="3"
       />
@@ -464,7 +464,7 @@ function IllustrationIntegration() {
         strokeLinecap="round"
       />
       {/* Person peeking top-right */}
-      <circle cx="210" cy="38" r="13" fill="#C4B5FD" stroke="#131B2E" strokeWidth="2.5" />
+      <circle cx="210" cy="38" r="13" fill="#A5F3FC" stroke="#131B2E" strokeWidth="2.5" />
       <circle cx="206" cy="36" r="1.2" fill="#131B2E" />
       <circle cx="214" cy="36" r="1.2" fill="#131B2E" />
       <path d="M206 42 q4 3 8 0" stroke="#131B2E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
@@ -495,7 +495,7 @@ function IllustrationAssessments() {
         width="100"
         height="136"
         rx="6"
-        fill="#FCD34D"
+        fill="#57DFFE"
         stroke="#131B2E"
         strokeWidth="3"
       />
@@ -545,8 +545,8 @@ function IllustrationTracking() {
         strokeWidth="3"
       />
       {/* Axes in yellow */}
-      <line x1="50" y1="32" x2="50" y2="124" stroke="#FCD34D" strokeWidth="4" strokeLinecap="round" />
-      <line x1="48" y1="122" x2="195" y2="122" stroke="#FCD34D" strokeWidth="4" strokeLinecap="round" />
+      <line x1="50" y1="32" x2="50" y2="124" stroke="#57DFFE" strokeWidth="4" strokeLinecap="round" />
+      <line x1="48" y1="122" x2="195" y2="122" stroke="#57DFFE" strokeWidth="4" strokeLinecap="round" />
       {/* Zigzag line */}
       <path
         d="M60 108 L85 92 L100 100 L125 72 L150 82 L182 45"
@@ -566,7 +566,7 @@ function IllustrationTracking() {
         strokeLinejoin="round"
       />
       {/* Check circle */}
-      <circle cx="170" cy="108" r="13" fill="none" stroke="#FCD34D" strokeWidth="3.5" />
+      <circle cx="170" cy="108" r="13" fill="none" stroke="#57DFFE" strokeWidth="3.5" />
       <path
         d="M164 108 l4 4 l7 -9"
         stroke="#131B2E"
@@ -616,7 +616,7 @@ function WhyItWorksSection() {
         <div className="grid gap-10 md:grid-cols-3">
           {WHY_CARDS.map((card) => (
             <div key={card.title} className="flex flex-col">
-              <div className="mb-6 flex aspect-[5/3] items-center justify-center overflow-hidden rounded-3xl bg-[#E2DBFA] px-6 py-8">
+              <div className="mb-6 flex aspect-[5/3] items-center justify-center overflow-hidden rounded-3xl bg-brand-50 px-6 py-8">
                 {card.illo}
               </div>
               <h3 className="font-display text-xl font-bold leading-snug tracking-tight text-text md:text-2xl">
